@@ -32,6 +32,6 @@
     @apply text-4xl sm:text-5xl lg:text-5xl font-AtypDisplayBold uppercase;
   }
   .custom-green-btn {
-    @apply px-8 py-3 rounded-md bg-green-500 font-AtypDisplayBold text-gray-900;
+    @apply px-8 py-3 rounded-md bg-green-500 font-AtypDisplayBold text-gray-900 hover:bg-green-400 transition-all;
   }
 }

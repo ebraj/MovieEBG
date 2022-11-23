@@ -22,7 +22,7 @@ import {
   BsFillArrowLeftCircleFill,
 } from "react-icons/bs";
 
-const Carousel = ({ popularMovies = [] }) => {
+const Carousel = ({ moviesList = [] }) => {
   const swiperRef = useRef();
   const swiperSettings = {
     modules: [Navigation, EffectFade, Autoplay, Keyboard],
@@ -39,15 +39,20 @@ const Carousel = ({ popularMovies = [] }) => {
     onBeforeInit: (swiper) => {
       swiperRef.current = swiper;
     },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+      },
+    },
   };
 
   return (
     <>
       <Swiper {...swiperSettings}>
-        {popularMovies.map((singlePopularMovie) => {
+        {moviesList.map((singleMovie) => {
           return (
-            <SwiperSlide key={singlePopularMovie.id}>
-              <CarouselItem singlePopularMovie={singlePopularMovie} />
+            <SwiperSlide key={singleMovie.id}>
+              <CarouselItem singleMovie={singleMovie} />
             </SwiperSlide>
           );
         })}

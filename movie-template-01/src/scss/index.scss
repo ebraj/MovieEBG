@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "scss/fonts.scss";
+
+@layer base {
+  /* Hiding the Scrollbar for now */
+  * {
+    @apply scrollbar-hide;
+  }
+  body {
+    font-size: 16px;
+    @apply text-gray-100 bg-[#000000] font-AtypDisplayMedium;
+  }
+  // h1 {
+  //   @apply text-3xl sm:text-4xl md:text-5xl font-bold;
+  // }
+  // h2 {
+  //   @apply text-2xl sm:text-3xl;
+  // }
+  // h3 {
+  //   @apply text-2xl;
+  // }
+}
+
+// Components
+@layer components {
+  .custom-movie-title {
+    @apply text-4xl sm:text-5xl lg:text-5xl font-AtypDisplayBold uppercase;
+  }
+  .custom-green-btn {
+    @apply px-8 py-3 rounded-md bg-green-500 font-AtypDisplayBold text-gray-900;
+  }
+}

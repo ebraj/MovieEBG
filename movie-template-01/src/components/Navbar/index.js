@@ -2,21 +2,29 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
+import { Link, NavLink } from "react-router-dom";
+import { navItems } from "datas";
 
 const Navbar = () => {
   return (
     <div className="z-50 w-full flex items-center justify-between space-x-5 p-5 bg-black">
-      <h4 className="uppercase font-AtypDisplayBold text-green-500">
-        MovieEBG
-      </h4>
+      <Link to="/">
+        <h4 className="uppercase font-AtypDisplayBold text-green-500">
+          MovieEBG
+        </h4>
+      </Link>
       <div className="justify-between w-full space-x-5 hidden lg:flex">
         <ul className="flex items-center justify-center space-x-5">
-          <li>Trending</li>
-          <li>Discover</li>
-          <li>TV Shows</li>
-          <li>People</li>
-          <li>Genres</li>
-          <li>Favourites</li>
+          {navItems.map((singleNavItem) => {
+            return (
+              <NavLink
+                key={singleNavItem.providedLink}
+                to={singleNavItem.providedLink}
+              >
+                <li>{singleNavItem.title}</li>
+              </NavLink>
+            );
+          })}
         </ul>
         <div className="flex bg-gray-800 overflow-hidden rounded-md">
           <input

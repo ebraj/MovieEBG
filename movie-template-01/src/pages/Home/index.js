@@ -11,6 +11,7 @@ const Homepage = () => {
   const [popularMovies, setPopularMovies] = useState();
   const [topRatedMovies, setTopRatedMovies] = useState();
   const [upcomingMovies, setUpcomingMovies] = useState();
+  const [carouselMovies, setCarouselMovies] = useState();
 
   useEffect(() => {
     (async function () {
@@ -18,9 +19,11 @@ const Homepage = () => {
       const { results: topRatedMovieResults } = await getTopRatedMovies();
       const { results: upcomingMovieResults } = await getUpcomingMovies();
 
-      populaMovieResults && setPopularMovies(populaMovieResults.slice(0, 10));
       upcomingMovieResults &&
-        setUpcomingMovies(upcomingMovieResults.slice(0, 5));
+        setCarouselMovies(upcomingMovieResults.slice(5, 10));
+      upcomingMovieResults &&
+        setUpcomingMovies(upcomingMovieResults.slice(0, 10));
+      populaMovieResults && setPopularMovies(populaMovieResults.slice(0, 10));
       topRatedMovieResults &&
         setTopRatedMovies(topRatedMovieResults.slice(0, 10));
     })();
@@ -29,7 +32,7 @@ const Homepage = () => {
   return (
     <>
       <NavbarFooterIncluded>
-        <Carousel moviesList={upcomingMovies} />
+        <Carousel moviesList={carouselMovies} />
         <div className="pt-10">
           <MovieContainer
             sectionTitle="Upcoming Movies"
@@ -39,7 +42,7 @@ const Homepage = () => {
           <MovieContainer
             sectionTitle="Popular Movies"
             moviesList={popularMovies}
-            btnText="View All Upcoming Movies"
+            btnText="View All popular Movies"
           />
           <MovieContainer
             sectionTitle="Top Rated Movies"

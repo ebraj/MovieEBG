@@ -2,6 +2,8 @@ import React from "react";
 import { MaxWidthLayout } from "layouts";
 import { truncateString } from "utils/truncateString";
 import { extractImgPoster } from "utils/extractImg";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 /**
  * React Icons

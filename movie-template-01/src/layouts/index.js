@@ -3,3 +3,4 @@ export { default as NavbarFooterIncluded } from "layouts/NavbarFooterIncluded";
 export { default as TopSection } from "layouts/TopSection";
 export { default as OtherSection } from "layouts/OtherSection";
 export { default as MovieContainer } from "layouts/MovieContainer";
+export { default as FlexibleMovieContainer } from "layouts/FlexibleMovieContainer";

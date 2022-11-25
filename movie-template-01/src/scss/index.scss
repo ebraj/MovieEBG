@@ -34,4 +34,7 @@
   .custom-green-btn {
     @apply px-8 py-3 rounded-md bg-green-500 font-AtypDisplayBold text-gray-900 hover:bg-green-400 transition-all;
   }
+  .custom-section-title {
+    @apply text-3xl uppercase font-AtypDisplayBold;
+  }
 }

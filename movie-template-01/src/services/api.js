@@ -61,3 +61,20 @@ export const getUpcomingMovies = async () => {
     return error.message;
   }
 };
+/**
+ * Getting the Trending movies...
+ */
+export const getTrendingMovies = async () => {
+  try {
+    const { data } = await axiosClient({
+      method: "get",
+      url: "/trending/movie/week",
+      params: {
+        api_key: tmdbKey,
+      },
+    });
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};

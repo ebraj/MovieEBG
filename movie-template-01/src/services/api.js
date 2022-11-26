@@ -64,13 +64,18 @@ export const getUpcomingMovies = async () => {
 /**
  * Getting the Trending movies...
  */
-export const getTrendingMovies = async () => {
+export const getTrendingMovies = async (
+  category = "movie",
+  dayWeek = "day",
+  page = 1
+) => {
   try {
     const { data } = await axiosClient({
       method: "get",
-      url: "/trending/movie/week",
+      url: `/trending/${category}/${dayWeek}`,
       params: {
         api_key: tmdbKey,
+        page: `${page}`,
       },
     });
     return data;

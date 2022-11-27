@@ -1,17 +1,45 @@
 import React, { useEffect, useState } from "react";
-import {
-  MaxWidthLayout,
-  FlexibleMovieContainer,
-  NavbarFooterIncluded,
-} from "layouts";
-import { TopSection } from "layouts";
+
+/**
+ * Components and layouts...
+ */
+import { MaxWidthLayout, NavbarFooterIncluded, TopSection } from "layouts";
+import { SelectComponent, Pagination, MovieCard } from "components";
 import { getTrendingMovies } from "services/api";
 
 const Trending = () => {
   const [trendingMovies, setTrendingMovies] = useState();
   const [category, setCategory] = useState("movie");
   const [dayWeek, setDayWeek] = useState("day");
-  const [page, setPage] = useState(1);
+  const [selectedPage, setSelectedPage] = useState(1);
+  console.log(trendingMovies);
+  /**
+   * For pagnination...
+   */
+  const [page, setPage] = useState(0);
+  const moviesPerPage = 20;
+  const numberOfRecordsVisited = page * moviesPerPage;
+  const totalPagesCalculated = Math.ceil(
+    trendingMovies?.total_results / moviesPerPage
+  );
+
+  /**
+   * For select options
+   */
+  const selectCategoryOptions = [
+    { value: "movie", label: "Movie" },
+    { value: "tv", label: "TV" },
+  ];
+  const selectDayWeekOptions = [
+    {
+      value: "day",
+      label: "Day",
+    },
+    {
+      value: "week",
+      label: "Week",
+    },
+  ];
 
   const handleCategoryChange = (providedCategory) => {
     setCategory(providedCategory);
@@ -20,7 +48,7 @@ const Trending = () => {
     setDayWeek(providedDayWeek);
   };
   const handlePageChange = (providedPage) => {
-    setPage(providedPage);
+    setSelectedPage(providedPage);
   };
 
   useEffect(() => {
@@ -29,7 +57,7 @@ const Trending = () => {
         results: trendingMoviesResults,
         total_pages,
         total_results,
-      } = await getTrendingMovies(category, dayWeek, page);
+      } = await getTrendingMovies(category, dayWeek, selectedPage);
       trendingMoviesResults &&
         setTrendingMovies({
           trendingMoviesResults,
@@ -37,23 +65,53 @@ const Trending = () => {
           total_results,
         });
     })();
-  }, [category, dayWeek, page]);
+  }, [category, dayWeek, selectedPage]);
 
   return (
     <NavbarFooterIncluded>
-      <TopSection>
-        <MaxWidthLayout>
-          <FlexibleMovieContainer
-            moviesList={trendingMovies?.trendingMoviesResults}
-            total_pages={trendingMovies?.total_pages}
-            total_results={trendingMovies?.total_results}
-            handleCategoryChange={handleCategoryChange}
-            handleDayWeekChange={handleDayWeekChange}
-            handlePageChange={handlePageChange}
-            sectionTitle="Trending Movies"
-          />
-        </MaxWidthLayout>
-      </TopSection>
+      <MaxWidthLayout>
+        <TopSection>
+          <div className="flex flex-col space-y-5 md:space-y-0 md:flex-row md:items-center md:space-x-5 md:justify-between">
+            <h2 className="text-3xl uppercase font-AtypDisplayBold">
+              Trending Movies
+            </h2>
+            <div className="flex space-x-2 justify-center">
+              <SelectComponent
+                selectOptions={selectCategoryOptions}
+                handleSelectChange={handleCategoryChange}
+                placeholder={"Select Category"}
+              />
+              <SelectComponent
+                selectOptions={selectDayWeekOptions}
+                handleSelectChange={handleDayWeekChange}
+                placeholder={"Select Day/Week"}
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-10">
+            {trendingMovies?.trendingMoviesResults
+              .slice(
+                numberOfRecordsVisited,
+                numberOfRecordsVisited + moviesPerPage
+              )
+              ?.map((singlePopularMovie) => {
+                return (
+                  <MovieCard
+                    key={singlePopularMovie.id}
+                    singlePopularMovie={singlePopularMovie}
+                  />
+                );
+              })}
+          </div>
+          <div>
+            <Pagination
+              totalPagesCalculated={totalPagesCalculated}
+              handlePageChange={handlePageChange}
+            />
+          </div>
+        </TopSection>
+      </MaxWidthLayout>
     </NavbarFooterIncluded>
   );
 };

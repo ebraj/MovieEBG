@@ -6,11 +6,16 @@ const MovieCard = ({ singlePopularMovie }) => {
   return (
     <div className="space-y-5">
       <div className="relative rounded-md overflow-hidden hover:scale-105 md:hover:scale-110 transition-all">
-        <img
-          src={extractImgPoster(singlePopularMovie.poster_path)}
-          className="rounded-md shadow-lg"
-          alt={singlePopularMovie.title}
-        />
+        {singlePopularMovie.poster_path ? (
+          <img
+            src={extractImgPoster(singlePopularMovie.poster_path)}
+            className="rounded-md shadow-lg"
+            alt={singlePopularMovie.title}
+          />
+        ) : (
+          <div className="w-full h-[320px] bg-slate-100"></div>
+        )}
+
         <p className="flex space-x-2 items-center absolute top-0 right-0 bg-red-500 px-1">
           <span className="text-xl text-white-500">
             <BsStarFill />

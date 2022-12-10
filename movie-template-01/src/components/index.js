@@ -1,7 +1,7 @@
-export { default as Navbar } from "components/Navbar";
-export { default as Footer } from "components/Footer";
-export { default as Carousel } from "components/Carousel";
-export { default as CarouselItem } from "components/CarouselItem";
-export { default as SelectComponent } from "components/SelectComponent";
-export { default as Pagination } from "components/Pagination";
-export { default as MovieCard } from "components/MovieCard";
+export { default as Navbar } from "components/navbar";
+export { default as Footer } from "components/footer";
+export { default as Carousel } from "components/carousel";
+export { default as CarouselItem } from "components/carouselItem";
+export { default as SelectComponent } from "components/selectComponent";
+export { default as Pagination } from "components/pagination";
+export { default as MovieCard } from "components/movieCard";

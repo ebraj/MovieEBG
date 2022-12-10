@@ -5,14 +5,13 @@ import React, { useEffect, useState } from "react";
  */
 import { MaxWidthLayout, NavbarFooterIncluded, TopSection } from "layouts";
 import { SelectComponent, Pagination, MovieCard } from "components";
-import { getTrendingMovies } from "services/api";
+import { getMovieGenres, getTrendingMovies } from "services/api";
 
 const Trending = () => {
   const [trendingMovies, setTrendingMovies] = useState();
   const [category, setCategory] = useState("movie");
   const [dayWeek, setDayWeek] = useState("day");
   const [selectedPage, setSelectedPage] = useState(1);
-  console.log(trendingMovies);
   /**
    * For pagnination...
    */

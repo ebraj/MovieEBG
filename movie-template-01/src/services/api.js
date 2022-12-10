@@ -83,3 +83,41 @@ export const getTrendingMovies = async (
     return error.message;
   }
 };
+/**
+ * Getting the Discover movies...
+ */
+export const getDiscoverMovies = async (sortBy, selectedPage, singleGenre) => {
+  try {
+    const { data } = await axiosClient({
+      method: "get",
+      url: "/discover/movie/",
+      params: {
+        api_key: tmdbKey,
+        sort_by: sortBy || "popularity.desc",
+        page: selectedPage,
+        with_genres: singleGenre || "28",
+      },
+    });
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};
+/**
+ * Getting the Genres list...
+ */
+export const getMovieGenres = async () => {
+  try {
+    const { data } = await axiosClient({
+      method: "get",
+      url: "/genre/movie/list",
+      params: {
+        api_key: tmdbKey,
+        language: "en-US",
+      },
+    });
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};

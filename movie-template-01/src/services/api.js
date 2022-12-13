@@ -121,3 +121,22 @@ export const getMovieGenres = async () => {
     return error.message;
   }
 };
+/**
+ * Getting the People list...
+ */
+export const getPeople = async (selectedPage) => {
+  try {
+    const { data } = await axiosClient({
+      method: "get",
+      url: "/person/popular",
+      params: {
+        api_key: tmdbKey,
+        page: selectedPage,
+      },
+    });
+    console.log(data);
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};

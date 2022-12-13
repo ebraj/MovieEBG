@@ -10,7 +10,7 @@ const MovieCard = ({ singlePopularMovie }) => {
           <img
             src={extractImgPoster(singlePopularMovie.poster_path)}
             className="rounded-md shadow-lg"
-            alt={singlePopularMovie.title}
+            alt={singlePopularMovie.id}
           />
         ) : (
           <div className="w-full h-[320px] bg-slate-100"></div>
@@ -29,7 +29,11 @@ const MovieCard = ({ singlePopularMovie }) => {
         ) : (
           <h3>{singlePopularMovie.name}</h3>
         )}
-        <p className="text-gray-500">{singlePopularMovie.release_date}</p>
+        {singlePopularMovie.release_date ? (
+          <p className="text-gray-500">{singlePopularMovie.release_date}</p>
+        ) : (
+          <p className="text-gray-500">{singlePopularMovie.first_air_date}</p>
+        )}
       </div>
     </div>
   );

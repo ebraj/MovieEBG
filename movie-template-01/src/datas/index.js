@@ -23,8 +23,4 @@ export const navItems = [
     title: "Genres",
     providedLink: "/genres",
   },
-  {
-    title: "Favourites",
-    providedLink: "/favourites",
-  },
 ];

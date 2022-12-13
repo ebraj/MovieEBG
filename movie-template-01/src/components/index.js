@@ -5,3 +5,4 @@ export { default as CarouselItem } from "components/carouselItem";
 export { default as SelectComponent } from "components/selectComponent";
 export { default as Pagination } from "components/pagination";
 export { default as MovieCard } from "components/movieCard";
+export { default as PersonCard } from "components/personCard";

@@ -12,10 +12,6 @@ export const navItems = [
     providedLink: "/discover",
   },
   {
-    title: "TV Shows",
-    providedLink: "/tv-shows",
-  },
-  {
     title: "People",
     providedLink: "/people",
   },

@@ -14,7 +14,15 @@
   }
   body {
     font-size: 16px;
-    @apply text-gray-100 bg-[#000000] font-AtypDisplayMedium;
+    @apply text-gray-300 bg-[#000000] font-AtypDisplayMedium;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-gray-100;
   }
   // h1 {
   //   @apply text-3xl sm:text-4xl md:text-5xl font-bold;
@@ -37,5 +45,8 @@
   }
   .custom-section-title {
     @apply text-3xl uppercase font-AtypDisplayBold;
+  }
+  .custom-minor-title {
+    @apply text-xl uppercase font-AtypDisplayBold;
   }
 }

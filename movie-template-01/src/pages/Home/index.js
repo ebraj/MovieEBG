@@ -20,7 +20,7 @@ const Homepage = () => {
       const { results: upcomingMovieResults } = await getUpcomingMovies();
 
       upcomingMovieResults &&
-        setCarouselMovies(upcomingMovieResults.slice(5, 10));
+        setCarouselMovies(upcomingMovieResults.slice(0, 5));
       upcomingMovieResults &&
         setUpcomingMovies(upcomingMovieResults.slice(0, 10));
       populaMovieResults && setPopularMovies(populaMovieResults.slice(0, 10));
@@ -38,16 +38,19 @@ const Homepage = () => {
             sectionTitle="Upcoming Movies"
             moviesList={upcomingMovies}
             btnText="View All Upcoming Movies"
+            btnLink="/upcoming"
           />
           <MovieContainer
             sectionTitle="Popular Movies"
             moviesList={popularMovies}
             btnText="View All popular Movies"
+            btnLink="/popular"
           />
           <MovieContainer
             sectionTitle="Top Rated Movies"
             moviesList={topRatedMovies}
             btnText="View All Top Rated Movies"
+            btnLink="/top-rated"
           />
         </div>
       </NavbarFooterIncluded>

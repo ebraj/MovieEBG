@@ -8,7 +8,7 @@ const axiosClient = axios.create({ baseURL: tmdbUrl });
 /**
  * Getting the popular movies...
  */
-export const getPopularMovies = async () => {
+export const getPopularMovies = async (selectedPage = 1) => {
   try {
     const { data } = await axiosClient({
       method: "get",
@@ -16,7 +16,7 @@ export const getPopularMovies = async () => {
       params: {
         api_key: tmdbKey,
         language: "en-US",
-        page: 1,
+        page: selectedPage,
       },
     });
     return data;
@@ -27,7 +27,7 @@ export const getPopularMovies = async () => {
 /**
  * Getting the top rated movies...
  */
-export const getTopRatedMovies = async () => {
+export const getTopRatedMovies = async (selectedPage = 1) => {
   try {
     const { data } = await axiosClient({
       method: "get",
@@ -35,7 +35,7 @@ export const getTopRatedMovies = async () => {
       params: {
         api_key: tmdbKey,
         language: "en-US",
-        page: 1,
+        page: selectedPage,
       },
     });
     return data;
@@ -46,7 +46,7 @@ export const getTopRatedMovies = async () => {
 /**
  * Getting the latest movies...
  */
-export const getUpcomingMovies = async () => {
+export const getUpcomingMovies = async (selectedPage = 1) => {
   try {
     const { data } = await axiosClient({
       method: "get",
@@ -54,6 +54,7 @@ export const getUpcomingMovies = async () => {
       params: {
         api_key: tmdbKey,
         language: "en-US",
+        page: selectedPage,
       },
     });
     return data;
@@ -135,6 +136,61 @@ export const getPeople = async (selectedPage) => {
       },
     });
     console.log(data);
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+/**
+ * Getting the single movie data...
+ */
+export const getSingleMovie = async (movieId) => {
+  try {
+    const { data } = await axiosClient({
+      method: "get",
+      url: `/movie/${movieId}`,
+      params: {
+        api_key: tmdbKey,
+        language: "en-US",
+      },
+    });
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};
+/**
+ * Getting the single movie credits...
+ */
+export const getSingleMovieCredits = async (movieId) => {
+  try {
+    const { data } = await axiosClient({
+      method: "get",
+      url: `/movie/${movieId}/credits`,
+      params: {
+        api_key: tmdbKey,
+        language: "en-US",
+      },
+    });
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};
+/**
+ * Getting the similar movies...
+ */
+export const getSimilarMovies = async (movieId) => {
+  try {
+    const { data } = await axiosClient({
+      method: "get",
+      url: `/movie/${movieId}/similar`,
+      params: {
+        api_key: tmdbKey,
+        language: "en-US",
+      },
+    });
     return data;
   } catch (error) {
     return error.message;

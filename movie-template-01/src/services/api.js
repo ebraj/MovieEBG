@@ -87,16 +87,20 @@ export const getTrendingMovies = async (
 /**
  * Getting the Discover movies...
  */
-export const getDiscoverMovies = async (sortBy, selectedPage, singleGenre) => {
+export const getDiscoverMovies = async (
+  sortBy,
+  selectedPage,
+  singleGenre = 28
+) => {
   try {
     const { data } = await axiosClient({
       method: "get",
-      url: "/discover/movie/",
+      url: "/discover/movie",
       params: {
         api_key: tmdbKey,
         sort_by: sortBy || "popularity.desc",
         page: selectedPage,
-        with_genres: singleGenre || "28",
+        with_genres: singleGenre,
       },
     });
     return data;
@@ -217,3 +221,25 @@ export const getMoviesByGenres = async (genreId, selectedPage = 1) => {
     return error.message;
   }
 };
+/**
+ * Search movie by title...
+ */
+export const getSearchedMovie = async (movieTitle, selectedPage = 1) => {
+  try {
+    const { data } = await axiosClient({
+      method: "get",
+      url: `/search/movie`,
+      params: {
+        query: movieTitle,
+        api_key: tmdbKey,
+        language: "en-US",
+        page: selectedPage,
+      },
+    });
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+getSearchedMovie();

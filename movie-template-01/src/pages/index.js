@@ -10,3 +10,4 @@ export { default as SingleMovie } from "pages/single-movie";
 export { default as Genres } from "pages/genres";
 export { default as ShowGenre } from "pages/show-genre";
 export { default as SingleGenre } from "pages/single-genre";
+export { default as SearchMovie } from "pages/search";

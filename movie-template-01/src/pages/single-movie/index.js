@@ -73,7 +73,7 @@ const SingleMovie = () => {
               <p className="leading-7">
                 {truncateString(singleMovie.overview)}
               </p>
-              <button className="custom-green-btn">View Details</button>
+              {/* <button className="custom-green-btn">View Details</button> */}
             </div>
           </div>
         </MaxWidthLayout>

@@ -4,11 +4,13 @@ import { truncateString } from "utils/truncateString";
 import { extractImgPoster } from "utils/extractImg";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { PATH } from "constants/paths";
 
 /**
  * React Icons
  */
 import { BsStarFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const CarouselItem = ({ singleMovie = {} }) => {
   return (
@@ -46,7 +48,9 @@ const CarouselItem = ({ singleMovie = {} }) => {
             <p className="leading-7 md:w-[80%] lg:w-[75%]">
               {truncateString(singleMovie.overview)}
             </p>
-            <button className="custom-green-btn">View Details</button>
+            <Link to={`${PATH.SHOWMOVIE}/${singleMovie.id}`}>
+              <button className="custom-green-btn">View Details</button>
+            </Link>
           </div>
         </div>
       </MaxWidthLayout>

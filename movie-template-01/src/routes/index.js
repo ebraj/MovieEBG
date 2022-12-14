@@ -13,6 +13,7 @@ import SingleMovieRoute from "routes/singleMovieRoute";
 import ShowGenreRoute from "routes/showGenreRoute";
 import SingleGenreRoute from "routes/singleGenreRoute";
 import GenresRoute from "routes/genresRoute";
+import SearchRoute from "routes/searchRoute";
 
 const AllRoutes = () => {
   return (
@@ -32,6 +33,7 @@ const AllRoutes = () => {
         <Route path={PATH.GENRE} element={<ShowGenreRoute />}>
           <Route path=":genreId" element={<SingleGenreRoute />} />
         </Route>
+        <Route path={PATH.SEARCH} element={<SearchRoute />} />
       </Routes>
     </BrowserRouter>
   );

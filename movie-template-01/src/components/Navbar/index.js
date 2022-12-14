@@ -4,9 +4,14 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { Link, NavLink } from "react-router-dom";
 import { navItems } from "datas";
+import { useSearchProvider } from "contexts/searchContext";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [providedInput, setProvidedInput] = useState("");
+  const { searchedKey, updateSearchedKey } = useSearchProvider();
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -36,8 +41,17 @@ const Navbar = () => {
               type="text"
               className="px-8 py-3 border-none outline-none bg-transparent"
               placeholder="Search any movie..."
+              onChange={(e) => {
+                setProvidedInput(e.target.value);
+              }}
             />
-            <button className="bg-green-500 px-5 text-gray-900">
+            <button
+              className="bg-green-500 px-5 text-gray-900"
+              onClick={() => {
+                updateSearchedKey(providedInput);
+                navigate("/search");
+              }}
+            >
               {/* <BsSearch /> */}
               <FaSearch />
             </button>

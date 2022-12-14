@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { MaxWidthLayout, NavbarFooterIncluded, TopSection } from "layouts";
 import { getMovieGenres } from "services/api";
 import { Link } from "react-router-dom";
+import { PATH } from "constants/paths";
 
 /**
  * Images...
@@ -33,7 +34,10 @@ const People = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             {allGenres?.map((singleGenre) => {
               return (
-                <Link key={singleGenre.id} to={`genre/${singleGenre.id}`}>
+                <Link
+                  key={singleGenre.id}
+                  to={`${PATH.GENRE}/${singleGenre.id}`}
+                >
                   <div
                     style={{
                       backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.2953956582633054) 0%, rgba(0,0,0,0.2469362745098039) 50%, rgba(0,0,0,0.6) 100%), url(/images/genres/${singleGenre.name}.jpg)`,

@@ -197,3 +197,23 @@ export const getSimilarMovies = async (movieId) => {
     return error.message;
   }
 };
+/**
+ * Getting the movies on the basis of genres...
+ */
+export const getMoviesByGenres = async (genreId, selectedPage = 1) => {
+  try {
+    const { data } = await axiosClient({
+      method: "get",
+      url: `/discover/movie/`,
+      params: {
+        api_key: tmdbKey,
+        language: "en-US",
+        with_genres: genreId,
+        page: selectedPage,
+      },
+    });
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};

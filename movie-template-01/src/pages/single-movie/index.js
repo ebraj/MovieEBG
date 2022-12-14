@@ -46,7 +46,7 @@ const SingleMovie = () => {
           backgroundSize: "cover",
           backgroundPosition: "top center",
         }}
-        className="min-h-[60vh] w-full flex items-center pt-28 md:pt-36 space-y-10"
+        className="min-h-[60vh] w-full flex items-center py-28 md:py-36 space-y-10"
       >
         <MaxWidthLayout>
           <div className="grid grid-cols-1 md:grid-cols-[28%_70%] gap-[2%]">

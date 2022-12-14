@@ -7,5 +7,6 @@ export const PATH = {
   TOPRATED: "/top-rated",
   PEOPLE: "/people",
   GENRES: "/genres",
+  GENRE: "/genre",
   SHOWMOVIE: "/show/movie",
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { SingleMovie } from "pages";
 
-const SIngleMovieRoute = () => {
+const SingleMovieRoute = () => {
   return (
     <>
       <SingleMovie />
@@ -9,4 +9,4 @@ const SIngleMovieRoute = () => {
   );
 };
 
-export default SIngleMovieRoute;
+export default SingleMovieRoute;

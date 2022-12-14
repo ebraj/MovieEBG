@@ -10,6 +10,7 @@ import PopularRoute from "routes/popularRoute";
 import TopRatedRoute from "routes/topRatedRoute";
 import ShowMovieRoute from "routes/showMovieRoute";
 import SingleMovieRoute from "routes/singleMovieRoute";
+import GenresRoute from "routes/genresRoute";
 
 const AllRoutes = () => {
   return (
@@ -22,6 +23,7 @@ const AllRoutes = () => {
         <Route path={PATH.UPCOMING} element={<UpcomingRoute />} />
         <Route path={PATH.POPULAR} element={<PopularRoute />} />
         <Route path={PATH.TOPRATED} element={<TopRatedRoute />} />
+        <Route path={PATH.GENRES} element={<GenresRoute />} />
         <Route path={PATH.SHOWMOVIE} element={<ShowMovieRoute />}>
           <Route path=":movieId" element={<SingleMovieRoute />} />
         </Route>

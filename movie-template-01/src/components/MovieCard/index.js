@@ -12,7 +12,7 @@ const MovieCard = ({ singlePopularMovie }) => {
         className="cursor-pointer"
       >
         <div className="space-y-5">
-          <div className="relative rounded-md overflow-hidden hover:scale-105 md:hover:scale-110 transition-all">
+          <div className="relative rounded-md overflow-hidden custom-card-hover">
             {singlePopularMovie.poster_path ? (
               <img
                 src={extractImgPoster(singlePopularMovie.poster_path)}

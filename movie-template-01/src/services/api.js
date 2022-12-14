@@ -117,6 +117,7 @@ export const getMovieGenres = async () => {
         language: "en-US",
       },
     });
+    console.log(data);
     return data;
   } catch (error) {
     return error.message;

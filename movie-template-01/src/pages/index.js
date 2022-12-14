@@ -7,3 +7,4 @@ export { default as Popular } from "pages/popular";
 export { default as TopRated } from "pages/top-rated";
 export { default as ShowMovie } from "pages/show-movie";
 export { default as SingleMovie } from "pages/single-movie";
+export { default as Genres } from "pages/genres";

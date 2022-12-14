@@ -49,4 +49,9 @@
   .custom-minor-title {
     @apply text-xl uppercase font-AtypDisplayBold;
   }
+
+  // Related to the hovering effect...
+  .custom-card-hover {
+    @apply hover:scale-105 md:hover:scale-110 transition-all;
+  }
 }
